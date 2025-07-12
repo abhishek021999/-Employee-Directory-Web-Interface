@@ -4,6 +4,8 @@ import EmployeeCard from "./components/employeeCard/EmployeeCard";
 import AddEmployeeForm from "./components/addEmployeeForm/AddEmployeeForm";
 import EditEmployeeForm from "./components/editEmployeeForm/EditEmployeeForm";
 import FilterPopup from "./components/FilterPopup/FilterPopup";
+
+// This is some default data to show initially
 const initialEmployees = [
   {
     id: 1,
@@ -26,23 +28,31 @@ const initialEmployees = [
     department: "Finance",
     role: "Analyst",
   },
-  // Add more if needed
 ];
 
 function App() {
+  // here we are setting up employees list using localStorage or initial data
   const [employees, setEmployees] = useState(() => {
     const stored = localStorage.getItem("employees");
     return stored ? JSON.parse(stored) : initialEmployees;
   });
 
+  // to search employees
   const [search, setSearch] = useState("");
+  // to keep track of employee we are editing
   const [editEmp, setEditEmp] = useState(null);
+  // to show/hide the add form
   const [showForm, setShowForm] = useState(false);
+  // how many employees to show
   const [showLimit, setShowLimit] = useState(10);
+  // to show/hide filter popup
   const [showFilterPopup, setShowFilterPopup] = useState(false);
+  // for filter values
   const [filter, setFilter] = useState({ name: "", department: "", role: "" });
+  // to sort by name or department
   const [sortBy, setSortBy] = useState("");
 
+  // filter logic - this filters employees based on search and filters
   let filtered = employees.filter(
     (emp) =>
       (emp.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -52,25 +62,28 @@ function App() {
       emp.role.toLowerCase().includes(filter.role.toLowerCase())
   );
 
-  // Sort based on selected value
+  // sort employees by name or department if selected
   if (sortBy) {
     filtered.sort((a, b) => {
       return a[sortBy].localeCompare(b[sortBy]);
     });
   }
 
+  // function to add a new employee
   const handleAdd = (newEmp) => {
     setEmployees([...employees, { ...newEmp, id: Date.now() }]);
-    setShowForm(false);
+    setShowForm(false); // hide the form after adding
   };
 
+  // function to update employee details
   const handleUpdate = (updatedEmp) => {
     setEmployees(
       employees.map((emp) => (emp.id === updatedEmp.id ? updatedEmp : emp))
     );
-    setEditEmp(null);
+    setEditEmp(null); // hide edit form
   };
 
+  // function to delete employee
   const deleteEmployee = (id) => {
     const emp = employees.find((e) => e.id === id);
     const confirmDelete = window.confirm(
@@ -81,6 +94,7 @@ function App() {
     }
   };
 
+  // whenever employees data changes, save it to localStorage
   useEffect(() => {
     localStorage.setItem("employees", JSON.stringify(employees));
   }, [employees]);
@@ -90,7 +104,9 @@ function App() {
       <div className="container">
         <header className="header">
           <h1>Employee Directory</h1>
+
           <div className="search-filter">
+            {/* input for searching */}
             <input
               type="text"
               placeholder="Search by name or email"
@@ -98,8 +114,12 @@ function App() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
+
+          {/* button to open filter popup */}
           <button onClick={() => setShowFilterPopup(true)}>Filter</button>
         </header>
+
+        {/* show filter popup if true */}
         {showFilterPopup && (
           <FilterPopup
             onApply={(data) => setFilter(data)}
@@ -109,16 +129,17 @@ function App() {
 
         <div className="controls">
           <div className="sortings">
-            <label htmlFor="">
+            {/* sorting dropdown */}
+            <label>
               Sort:
               <select onChange={(e) => setSortBy(e.target.value)}>
                 <option value="">--Select--</option>
                 <option value="name">Name</option>
                 <option value="department">Department</option>
-                {/* <option value="role">Role</option> */}
               </select>
             </label>
 
+            {/* how many to show */}
             <label>
               Show:
               <select
@@ -136,11 +157,13 @@ function App() {
             </label>
           </div>
 
+          {/* button to show add form */}
           <button className="add-btn" onClick={() => setShowForm(true)}>
             Add Employee
           </button>
         </div>
 
+        {/* display employee cards */}
         <div className="employee-list">
           {filtered.slice(0, showLimit).map((emp) => (
             <EmployeeCard
@@ -152,12 +175,15 @@ function App() {
           ))}
         </div>
 
+        {/* show add employee form */}
         {showForm && (
           <AddEmployeeForm
             onAdd={handleAdd}
             onClose={() => setShowForm(false)}
           />
         )}
+
+        {/* show edit employee form */}
         {editEmp && (
           <EditEmployeeForm
             employee={editEmp}
@@ -166,6 +192,8 @@ function App() {
           />
         )}
       </div>
+
+      {/* footer section */}
       <footer>© 2025 Employee Directory App. All rights reserved.</footer>
     </>
   );
