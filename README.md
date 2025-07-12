@@ -67,6 +67,5 @@ Delete employees with confirmation.
 All data changes are saved in localStorage.
 
 
-
-
+![alt text](image.png)
 
