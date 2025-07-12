@@ -11,6 +11,21 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3); /* semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 999;
+  overflow-y: auto;
+  padding-top: 60px; /* ensures spacing on small screens */
+}
+
 
 .modal h2 {
   margin-bottom: 20px;

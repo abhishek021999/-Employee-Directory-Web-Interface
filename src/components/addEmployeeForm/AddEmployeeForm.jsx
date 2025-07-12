@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./AddEmployeeForm.css";
 
 const AddEmployeeForm = ({ onAdd, onClose }) => {
+  const modalRef = useRef();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -9,6 +10,13 @@ const AddEmployeeForm = ({ onAdd, onClose }) => {
     department: "",
     role: "",
   });
+
+  const handleOverlayClick = (e) => {
+    // Close only if click was outside modal content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   const [errors, setErrors] = useState({});
 
@@ -65,7 +73,8 @@ const AddEmployeeForm = ({ onAdd, onClose }) => {
   };
 
   return (
-    <div className="modal">
+     <div className="modal-overlay" onClick={handleOverlayClick}>
+    <div className="modal" ref={modalRef}>
       <h2>Add Employee</h2>
 
       <div className="form-group">
@@ -140,6 +149,7 @@ const AddEmployeeForm = ({ onAdd, onClose }) => {
           Add
         </button>
       </div>
+    </div>
     </div>
   );
 };

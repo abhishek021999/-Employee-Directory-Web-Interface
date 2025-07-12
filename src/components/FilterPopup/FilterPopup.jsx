@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './FilterPopup.css';
 
 const FilterPopup = ({ onApply, onClose }) => {
   const [formData, setFormData] = useState({ name: '', department: '', role: '' });
+  const modalRef = useRef();
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,8 +21,16 @@ const FilterPopup = ({ onApply, onClose }) => {
     onClose();
   };
 
+   const handleOverlayClick = (e) => {
+    // Close only if click was outside modal content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="filter-popup">
+     <div className="modal-overlay" onClick={handleOverlayClick}>
+    <div className="filter-popup" ref={modalRef}>
       <h3>Filter Employees</h3>
       <label>
         First Name:
@@ -39,6 +48,7 @@ const FilterPopup = ({ onApply, onClose }) => {
         <button onClick={handleApply}>Apply</button>
         <button onClick={handleReset}>Reset</button>
       </div>
+    </div>
     </div>
   );
 };
