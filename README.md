@@ -1,12 +1,78 @@
-# React + Vite
+# 👥 Employee Directory App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React-based application to manage an employee directory. You can **add**, **edit**, **delete**, **search**, **sort**, **filter**, and **limit** how many employees are shown on the screen. Data is saved in `localStorage` so it persists even after refreshing the page.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ✅ View all employees
+- 🔍 Search by name or email
+- 🎯 Filter by name, department, and role
+- ↕️ Sort employees by name or department
+- ➕ Add a new employee
+- 📝 Edit employee details
+- ❌ Delete employee with confirmation
+- 🔢 Control how many employees to display
+- 💾 Data stored in browser's localStorage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Project Structure
+
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** – For building the UI
+- **CSS** – For styling
+- **localStorage** – To store employee data in the browser
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or above)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/abhishek021999/-Employee-Directory-Web-Interface
+cd employee-directory
+
+2. **Install dependencies:**  
+
+  npm install
+3. **Start the development server**
+   npm start
+
+
+✨ How It Works
+The app starts with sample employee data or loads from localStorage.
+
+Users can:
+
+Search employees by name or email.
+
+Filter by name, department, or role.
+
+Sort employees by name or department.
+
+Add new employees using a modal form.
+
+Edit employee details.
+
+Delete employees with confirmation.
+
+All data changes are saved in localStorage.
+
+
+
+
+
