@@ -1,0 +1,63 @@
+.filter-popup {
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  width: 300px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border-radius: 8px;
+}
+
+.filter-popup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.filter-popup input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 5px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.popup-buttons button {
+  padding: 8px 12px;
+}
+
+/* ✅ Tablet responsiveness (≤768px) */
+@media screen and (max-width: 768px) {
+  .filter-popup {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    top: 15%;
+    padding: 16px;
+  }
+}
+
+/* ✅ Mobile responsiveness (≤480px) */
+@media screen and (max-width: 480px) {
+  .filter-popup {
+    width: 90%;
+    top: 12%;
+    padding: 14px;
+  }
+
+  .popup-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .popup-buttons button {
+    width: 100%;
+  }
+}

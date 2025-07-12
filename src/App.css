@@ -1,0 +1,207 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f7f7f7;
+}
+
+.container {
+  flex: 1;
+  padding-bottom: 20px; /* Space above footer */
+}
+
+/* Header styles */
+.header {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  /* border: 1px solid white; */
+}
+
+.search-filter {
+  display: flex;
+  align-items: center;
+}
+
+.search-filter input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.search-filter select,
+.search-filter button {
+  padding: 8px 12px;
+  margin-right: 10px;
+}
+
+/* Controls for sort/show/add */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: white;
+}
+
+.controls select {
+  padding: 6px;
+}
+  .sortings{
+    display: flex;
+    gap: 10px;
+  }
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Employee Cards */
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card-buttons {
+  margin-top: 10px;
+}
+
+.card-buttons button {
+  padding: 6px 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.card-buttons button:hover {
+  background-color: #e4e4e4;
+}
+
+/* Modal (for Add/Edit forms) */
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  width: 30%;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px gray;
+  z-index: 1000;
+  border-radius: 8px;
+}
+
+.modal input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+}
+
+/* Footer */
+footer {
+  background-color: #2e2e2e;
+  color: white;
+  text-align: left;
+  padding: 15px 40px;
+}
+/* ---------- Responsive CSS ---------- */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .search-filter input,
+  .search-filter select,
+  .search-filter button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+
+  .employee-list {
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .modal {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .add-btn,
+  .card-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .employee-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal {
+    width: 90%;
+    left: 5%;
+  }
+}

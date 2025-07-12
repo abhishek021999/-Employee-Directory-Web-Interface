@@ -1,0 +1,130 @@
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 400px;
+  margin: auto;
+  position: fixed;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input,
+.selectOne {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.row-group {
+  display: flex;
+  gap: 25px;
+}
+
+.row-group .form-group {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button.cancel {
+  padding: 10px 16px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button.add {
+  padding: 10px 16px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button.add:hover {
+  background-color: #0056d2;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+button.add:disabled {
+  background-color: #b3d4fc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ✅ Tablet responsiveness */
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 90%;
+    padding: 20px;
+    top: 10%;
+  }
+
+  .row-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button.add,
+  button.cancel {
+    width: 100%;
+  }
+}
+
+/* ✅ Mobile responsiveness */
+@media screen and (max-width: 480px) {
+  .modal {
+    width: 95%;
+    padding: 15px;
+    top: 12%;
+  }
+
+  .modal h2 {
+    font-size: 20px;
+  }
+
+  input,
+  .selectOne {
+    font-size: 13px;
+  }
+}
