@@ -16,12 +16,6 @@ A simple React-based application to manage an employee directory. You can **add*
 - 🔢 Control how many employees to display
 - 💾 Data stored in browser's localStorage
 
----
-
-## 📁 Project Structure
-
-
----
 
 ## 🛠️ Tech Stack
 
