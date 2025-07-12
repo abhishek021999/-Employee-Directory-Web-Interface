@@ -39,6 +39,8 @@ function App() {
 
   // to search employees
   const [search, setSearch] = useState("");
+  // debounced value of search input
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   // to keep track of employee we are editing
   const [editEmp, setEditEmp] = useState(null);
   // to show/hide the add form
@@ -55,8 +57,8 @@ function App() {
   // filter logic - this filters employees based on search and filters
   let filtered = employees.filter(
     (emp) =>
-      (emp.name.toLowerCase().includes(search.toLowerCase()) ||
-        emp.email.toLowerCase().includes(search.toLowerCase())) &&
+      (emp.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+        emp.email.toLowerCase().includes(debouncedSearch.toLowerCase())) &&
       emp.name.toLowerCase().includes(filter.name.toLowerCase()) &&
       emp.department.toLowerCase().includes(filter.department.toLowerCase()) &&
       emp.role.toLowerCase().includes(filter.role.toLowerCase())
@@ -98,6 +100,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("employees", JSON.stringify(employees));
   }, [employees]);
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [search]);
 
   return (
     <>

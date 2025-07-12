@@ -7,7 +7,7 @@ A simple React-based application to manage an employee directory. You can **add*
 ## 🚀 Features
 
 - ✅ View all employees
-- 🔍 Search by name or email
+- 🔍 Search by name or email with debouncing Optimization Technique
 - 🎯 Filter by name, department, and role
 - ↕️ Sort employees by name or department
 - ➕ Add a new employee
